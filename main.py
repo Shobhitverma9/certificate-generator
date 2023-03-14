@@ -36,10 +36,10 @@ def uploadImage(p_id):
 
   # Upload the image.
   # Set the asset's public ID and allow overwriting the asset with new versions
-  cloudinary.uploader.upload("hello5.png", public_id=p_id, unique_filename = False, overwrite=True)
-
+  response = cloudinary.uploader.upload("hello5.png", public_id="fasdfaf", unique_filename = False, overwrite=True)
+  #print(response)
   # Build the URL for the image and save it in the variable 'srcURL'
-  srcURL = cloudinary.CloudinaryImage(p_id).build_url()
+  srcURL = response['secure_url']
 
   # Log the image URL to the console. 
   # Copy this URL in a browser tab to generate the image on the fly.
