@@ -16,7 +16,7 @@ cloudinary.config(
 )
 
 
-#myFont = ImageFont.truetype('calibri', size=40)
+myFont = ImageFont.truetype('calibri.ttf', size=40)
 
 def makeCertificate(data):
     W, H = (1920,1080)
