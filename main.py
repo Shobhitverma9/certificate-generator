@@ -16,15 +16,15 @@ cloudinary.config(
 )
 
 
-myFont = ImageFont.truetype('calibri', size=40)
+#myFont = ImageFont.truetype('calibri', size=40)
 
 def makeCertificate(data):
     W, H = (1920,1080)
     msg = data['name']
     im = Image.open('cert.png')
     draw = ImageDraw.Draw(im)
-    _, _, w, h = draw.textbbox((1100, 500), msg, font=myFont)
-    draw.text(((W-w)/2, (H-h)/2), msg, font=myFont, fill='orange')
+    _, _, w, h = draw.textbbox((1100, 500), msg)
+    draw.text(((W-w)/2, (H-h)/2), msg, fill='orange')
 
     im.save("hello5.png", "PNG")
 
