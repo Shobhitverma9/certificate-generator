@@ -1,7 +1,5 @@
 from flask import Flask, jsonify, request
 from flask_restful import Api
-from dotenv import load_dotenv
-load_dotenv()
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
@@ -9,10 +7,16 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import json
-config = cloudinary.config(secure=True)
+#Config
+cloudinary.config(
+  cloud_name = "dy1hexft1",
+  api_key = "311744991862889",
+  api_secret = "2uq-b8O_1WMASu06UY5Kj5WsLmg",
+  secure = True
+)
 
 
-myFont = ImageFont.truetype('C:\Windows\Fonts\Constantia\constan', size=40)
+myFont = ImageFont.truetype('calibri', size=40)
 
 def makeCertificate(data):
     W, H = (1920,1080)
