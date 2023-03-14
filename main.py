@@ -7,6 +7,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import json
+from flask_cors import CORS
 #Config
 cloudinary.config(
   cloud_name = "dy1hexft1",
@@ -46,6 +47,7 @@ def uploadImage(p_id):
   return srcURL
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/', methods=['POST'])
 def hello_world():
