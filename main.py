@@ -67,4 +67,6 @@ def hello_world():
     makeCertificate(data)
     insertIntoDatabase(data)
     url = uploadImage(p_id)
-    return make_response(jsonify({"url": url}))
+    res = make_response(jsonify({"url": url}))
+    res.headers['Access-Control-Allow-Origin'] = '*'
+    return res
