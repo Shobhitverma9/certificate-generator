@@ -23,7 +23,7 @@ def makeCertificate(data):
     msg = data['name']
     im = Image.open('cert.png')
     draw = ImageDraw.Draw(im)
-    _, _, w, h = draw.textbbox((1100, 500), font=myFont,msg)
+    _, _, w, h = draw.textbbox((1100, 500),msg, font=myFont)
     draw.text(((W-w)/2, (H-h)/2), msg,font=myFont,fill='orange')
 
     im.save("hello5.png", "PNG")
