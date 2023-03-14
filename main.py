@@ -3,6 +3,8 @@ from flask_restful import Api
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
+import pymongo
+from pymongo import MongoClient
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -15,9 +17,17 @@ cloudinary.config(
   api_secret = "2uq-b8O_1WMASu06UY5Kj5WsLmg",
   secure = True
 )
-
+client = pymongo.MongoClient("mongodb+srv://shobhit:ZZf3ANMALqS0sPZH@cluster0.ejgkzul.mongodb.net/?retryWrites=true&w=majority")
 
 myFont = ImageFont.truetype('calibri.ttf', size=40)
+
+def insertIntoDatabase(data):
+    name=data['name']
+    db = client["Shopghumakkad"]
+    collection = db["Userdata"]
+    mydict = { "name": name, "address": "Highway 37" }
+    x = collection.insert_one(mydict)
+    print(x)
 
 def makeCertificate(data):
     W, H = (1920,1080)
@@ -55,5 +65,6 @@ def hello_world():
     #print(data['name'])
     p_id = data['id']
     makeCertificate(data)
+    insertIntoDatabase(data)
     url = uploadImage(p_id)
     return make_response(jsonify({"url": url}))
