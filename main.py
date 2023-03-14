@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request , make_response
 from flask_restful import Api
 from PIL import Image
 from PIL import ImageDraw
@@ -56,4 +56,4 @@ def hello_world():
     p_id = data['id']
     makeCertificate(data)
     url = uploadImage(p_id)
-    return url
+    return make_response(jsonify({"url": url}))
