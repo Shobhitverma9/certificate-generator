@@ -28,17 +28,17 @@ def makeCertificate(data):
 
     im.save("hello5.png", "PNG")
 
-def uploadImage():
+def uploadImage(p_id):
 
   # Upload the image and get its URL
   # ==============================
 
   # Upload the image.
   # Set the asset's public ID and allow overwriting the asset with new versions
-  cloudinary.uploader.upload("hello5.png", public_id="quicksta", unique_filename = False, overwrite=True)
+  cloudinary.uploader.upload("hello5.png", public_id=p_id, unique_filename = False, overwrite=True)
 
   # Build the URL for the image and save it in the variable 'srcURL'
-  srcURL = cloudinary.CloudinaryImage("quicksta").build_url()
+  srcURL = cloudinary.CloudinaryImage(p_id).build_url()
 
   # Log the image URL to the console. 
   # Copy this URL in a browser tab to generate the image on the fly.
@@ -51,6 +51,7 @@ app = Flask(__name__)
 def hello_world():
     data = request.json
     #print(data['name'])
+    p_id = data['id']
     makeCertificate(data)
-    url = uploadImage()
+    url = uploadImage(p_id)
     return url
